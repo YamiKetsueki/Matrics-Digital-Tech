@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Matrics Digital</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0; padding: 0;
+      background: #f4f4f4;
+    }
+
+    header {
+      background: #0e4b88;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .container {
+      padding: 1rem;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .products {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+
+    .product {
+      flex: 1 1 45%;
+      background: white;
+      margin: 0.5rem;
+      border-radius: 10px;
+      padding: 1rem;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .product img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    form {
+      background: white;
+      padding: 1rem;
+      margin-top: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    input, select, textarea, button {
+      width: 100%;
+      padding: 0.8rem;
+      margin: 0.5rem 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      background: #0e4b88;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    @media (max-width: 600px) {
+      .product {
+        flex: 1 1 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Matrics Digital</h1>
+    <p>Buy USB Tokens Online - Quick & Secure</p>
+  </header>
+
+  <div class="container">
+    <div class="products">
+      <div class="product">
+        <img src="images/hyp2003.jpg" alt="HYP2003">
+        <h3>HYP2003</h3>
+      </div>
+      <div class="product">
+        <img src="images/proxkey.jpg" alt="ProxKey">
+        <h3>ProxKey</h3>
+      </div>
+      <div class="product">
+        <img src="images/mtoken.jpg" alt="MToken">
+        <h3>MToken</h3>
+      </div>
+      <div class="product">
+        <img src="images/innaITkey.jpg" alt="InnaITKey">
+        <h3>InnaITKey</h3>
+      </div>
+    </div>
+
+    <form id="orderForm">
+      <h2>Place Your Order</h2>
+      <input type="text" name="name" placeholder="Your Name" required />
+      <input type="tel" name="phone" placeholder="Mobile Number" required />
+      <textarea name="address" placeholder="Full Address" rows="3" required></textarea>
+      <select name="product" required>
+        <option value="" disabled selected>Select Product</option>
+        <option value="HYP2003">HYP2003</option>
+        <option value="ProxKey">ProxKey</option>
+        <option value="MToken">MToken</option>
+        <option value="InnaITKey">InnaITKey</option>
+      </select>
+      <input type="number" name="quantity" min="1" placeholder="Quantity" required />
+
+      <button type="submit">Order on WhatsApp</button>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById('orderForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const name = encodeURIComponent(this.name.value);
+      const phone = encodeURIComponent(this.phone.value);
+      const address = encodeURIComponent(this.address.value);
+      const product = encodeURIComponent(this.product.value);
+      const quantity = encodeURIComponent(this.quantity.value);
+
+      const message = 
+        `📦 *New Order from Matrics Digital* %0A` +
+        `👤 *Name:* ${name} %0A` +
+        `📱 *Phone:* ${phone} %0A` +
+        `🏠 *Address:* ${address} %0A` +
+        `🧾 *Product:* ${product} %0A` +
+        `🔢 *Quantity:* ${quantity}`;
+
+      const yourNumber = '2052996529'; // ← REPLACE WITH YOUR WHATSAPP NUMBER
+      window.location.href = `https://wa.me/${yourNumber}?text=${message}`;
+    });
+  </script>
+</body>
+</html>
